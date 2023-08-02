@@ -84,7 +84,7 @@ app.post('/api/greetings',async(req,res)=>{
 console.log("-----------------------")
 const result1=await getGreetings();
 
-console.log(result1);
+//console.log(result1);
 
 
 
