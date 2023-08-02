@@ -9,7 +9,7 @@ app.use(express.json());
 const PORT=process.env.PORT || 4003;
 
 //route to display all languages
-app.get('https://sqlite-101-mh80.onrender.com/api/greetings',async(req,res)=>{
+app.get('/api/greetings',async(req,res)=>{
     const greeting=await getGreetings();
     res.json(
         {
@@ -19,7 +19,7 @@ app.get('https://sqlite-101-mh80.onrender.com/api/greetings',async(req,res)=>{
 });
 
 //route to add greeting
-app.post('https://sqlite-101-mh80.onrender.com/api/greetings',async(req,res)=>{
+app.post('/api/greetings',async(req,res)=>{
     const language=req.body.language;
     const greeting=req.body.greeting;
     await addGreeting(language,greeting);
@@ -27,6 +27,31 @@ app.post('https://sqlite-101-mh80.onrender.com/api/greetings',async(req,res)=>{
         {
             status:"success",
             message:`Added a greeting for ${language}`
+        }
+    )
+});
+
+app.post('/api/greetings',async(req,res)=>{
+    const language=req.body.language;
+    const greeting=req.body.greeting;
+    const id=req.body.id;
+    await update(language,greeting,id);
+    res.json(
+        {
+            status:"success",
+            message:`Added a greeting for ${language}`
+        }
+    )
+});
+
+//delete by id
+app.post('/api/greetings',async(req,res)=>{
+    const id=req.body.id;
+    await deleteGreetingbyLanguage(id);
+    res.json(
+        {
+            status:"success",
+            message:`deleted a greeting for ${id}`
         }
     )
 });
