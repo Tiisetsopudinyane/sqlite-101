@@ -31,6 +31,7 @@ app.post('/api/greetings',async(req,res)=>{
     )
 });
 
+//update the language on the db
 app.post('/api/greetings',async(req,res)=>{
     const language=req.body.language;
     const greeting=req.body.greeting;
@@ -44,14 +45,26 @@ app.post('/api/greetings',async(req,res)=>{
     )
 });
 
-//delete by id
+//delete by id on the db
 app.post('/api/greetings',async(req,res)=>{
     const id=req.body.id;
-    await deleteGreetingbyLanguage(id);
+    await deleteGreetingbyid(id);
     res.json(
         {
             status:"success",
             message:`deleted a greeting for ${id}`
+        }
+    )
+});
+
+//delete by language on the db
+app.post('/api/greetings',async(req,res)=>{
+    const language=req.body.language;
+    await deleteGreetingbyid(language);
+    res.json(
+        {
+            status:"success",
+            message:`deleted a greeting for ${language}`
         }
     )
 });
