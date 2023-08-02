@@ -1,6 +1,20 @@
-POST http://localhost:4003/api/greetings
+GET https://sqlite-101-mh80.onrender.com/api/greetings
+Content-Type: application/json
+{
+    
+}
+
+###
+POST https://sqlite-101-mh80.onrender.com/api/greetings
 Content-Type: application/json
 {
             "language":"Afrikaans",
             "greeting":"goie more"
+}
+###
+POST https://sqlite-101-mh80.onrender.com/api/greetings
+Content-Type: application/json
+{
+            "language":"Vhenda",
+            "greeting":"Nda"
 }
