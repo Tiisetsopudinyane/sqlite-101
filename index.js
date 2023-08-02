@@ -23,6 +23,7 @@ app.post('/api/greetings',async(req,res)=>{
     const language=req.body.language;
     const greeting=req.body.greeting;
     await addGreeting(language,greeting);
+    await getGreetings();
     res.json(
         {
             status:"success",
@@ -37,6 +38,7 @@ app.post('/api/greetings',async(req,res)=>{
     const greeting=req.body.greeting;
     const id=req.body.id;
     await update(language,greeting,id);
+    
     res.json(
         {
             status:"success",
